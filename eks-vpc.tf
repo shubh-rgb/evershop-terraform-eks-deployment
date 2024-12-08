@@ -5,15 +5,14 @@ module "vpc" {
   enable_dns_hostnames = true
   enable_dns_support  = true
 
-  azs             = ["ap-south-1a","ap-south-1b"]
-  private_subnets = ["10.0.1.0/24","10.0.2.0/24"]
-  public_subnets  = ["10.0.11.0/24","10.0.12.0/24"]
-<<<<<<< HEAD
+  azs             = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
   map_public_ip_on_launch = true
-=======
-
->>>>>>> 5e5e6c6d2a126d682af4464dc9ccb3d7e14ab179
   enable_nat_gateway = true
+
+    # Disable default route table
+  manage_default_route_table = false
 }
 
 
@@ -29,14 +28,10 @@ resource "aws_s3_bucket_policy" "terraform_state_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-<<<<<<< HEAD
         Action    = [
           "s3:GetObject",
           "s3:PutObject"
         ]
-=======
-        Action    = "s3:GetObject"
->>>>>>> 5e5e6c6d2a126d682af4464dc9ccb3d7e14ab179
         Effect    = "Allow"
         Resource  = "arn:aws:s3:::evershop-tfstate-bucket/*"
         Principal = "*"
