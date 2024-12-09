@@ -13,6 +13,7 @@ module "vpc" {
 
     # Disable default route table
   manage_default_route_table = false
+  
 }
 
 
